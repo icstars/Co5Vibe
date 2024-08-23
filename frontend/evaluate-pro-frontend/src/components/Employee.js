@@ -17,7 +17,7 @@ const Employee = () => {
     }, []);
 
     const addEmployee = () => {
-        axios.post('http://localhost:3000/api/employees',{ FName,LName,Email,EmployeeId,score})
+        axios.post('http://localhost:3000/api/employees',{ FName,LName,Email,Employee,EmployeeId,Score,Title})
              .then(response => setEmployees([...employees, response.data]))
              .catch(error => console.error(error));        
     };
@@ -27,7 +27,7 @@ const Employee = () => {
             <h1>Employees</h1>
             <ul>
                 {employees.map(employee => (
-                    <li key={employee.id}>{employee.FName}{employee.LName}{employee.Email} -Score: {employee.score}</li>
+                    <li key={employee.id}>{employee.FName}{employee.LName}{employee.Email}{employee.Title} -Score: {employee.score}</li>
                 ))}
             </ul>
             <input
@@ -59,6 +59,12 @@ const Employee = () => {
                 placeholder="Score"
                 value={score}
                 onChange={e => setScore(e.target.value)}
+            />
+            <input
+                type="text"
+                placeholder="Title"
+                value={Title}
+                onChange={e => setTitle(e.target.value)}
             />
             <button onClick={addEmployee}>Add Employee</button>
         </div>         

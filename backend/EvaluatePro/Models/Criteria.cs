@@ -1,6 +1,6 @@
 public class Criteria
 {
-    public int id { get; set; }
+    public int Id { get; set; }
 
     public string? FName { get; set; }
 
@@ -12,7 +12,7 @@ public class Criteria
 
     public bool? IsManager { get; set; }
 
-    public int score { get; set;}
+    public int Score { get; set;}
     public int Criteria1 { get; set; }
 
 }

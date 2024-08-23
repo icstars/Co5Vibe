@@ -26,7 +26,7 @@ app.MapGet("/api/employees", async (EvaluateProDbContext db) => await db.Employe
 app.MapPost("/api/employees", async (EvaluateProDbContext db, Employee employee) => {
     db.Employees.Add(employee);
     await db.SaveChangesAsync();
-    return Results.Created($"/api/employees/{employee.id}", employee);
+    return Results.Created($"/api/employees/{employee.Id}", employee);
 });
 app.MapGet("/api/criteria", async (EvaluateProDbContext db) => await db.Criterias.ToListAsync());
 
@@ -34,7 +34,7 @@ app.MapPost("/api/criteria", async (EvaluateProDbContext db, Criteria criteria) 
 {
     db.Criterias.Add(criteria);
     await db.SaveChangesAsync();
-    return Results.Created($"/api/criteria/{criteria.id}", criteria);
+    return Results.Created($"/api/criteria/{criteria.Id}", criteria);
 });
 
 app.Run();
