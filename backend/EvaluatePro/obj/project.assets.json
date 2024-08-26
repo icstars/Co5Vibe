@@ -2266,19 +2266,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DanielGonzalez\\.nuget\\packages\\": {}
+    "C:\\Users\\DemetriusRobinson\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DanielGonzalez\\Documents\\CSharpEnviroment\\React-Dotnet\\backend\\EvaluatePro\\EvaluatePro.csproj",
+      "projectUniqueName": "C:\\Users\\DemetriusRobinson\\Documents\\GitHub\\Co5Vibe\\backend\\EvaluatePro\\EvaluatePro.csproj",
       "projectName": "EvaluatePro",
-      "projectPath": "C:\\Users\\DanielGonzalez\\Documents\\CSharpEnviroment\\React-Dotnet\\backend\\EvaluatePro\\EvaluatePro.csproj",
-      "packagesPath": "C:\\Users\\DanielGonzalez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DanielGonzalez\\Documents\\CSharpEnviroment\\React-Dotnet\\backend\\EvaluatePro\\obj\\",
+      "projectPath": "C:\\Users\\DemetriusRobinson\\Documents\\GitHub\\Co5Vibe\\backend\\EvaluatePro\\EvaluatePro.csproj",
+      "packagesPath": "C:\\Users\\DemetriusRobinson\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DemetriusRobinson\\Documents\\GitHub\\Co5Vibe\\backend\\EvaluatePro\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\DanielGonzalez\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\DemetriusRobinson\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
