@@ -7,11 +7,11 @@ body {
   min-height: 100vh;
   display: flex;
   font-weight: 400;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 h1,h2,h3,h4,h5,h6,label,span {
   font-weight: 500;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body, html, .App, #root, .auth-wrapper {
   width: 100%;
@@ -22,6 +22,12 @@ body, html, .App, #root, .auth-wrapper {
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
 }
 
+.navbar-logo {
+  background-image: url(./img/Co5logo.png);
+  background-repeat: no-repeat; 
+  background-size: contain; 
+  padding-left: 20px;
+}
 
 .auth-wrapper {
   display: flex;
@@ -61,4 +67,12 @@ body, html, .App, #root, .auth-wrapper {
 }
 .forgot-password a {
   color: #167bff;
+}
+
+.login-screen {
+  background: #1C8EF9;
+  min-height: 100vh;
+  display: flex;
+  font-weight: 400;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
