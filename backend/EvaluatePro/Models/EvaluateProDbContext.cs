@@ -17,9 +17,8 @@ public class EvaluateProDbContext(DbContextOptions<EvaluateProDbContext> options
     
     public DbSet <Feedback> Feedback {get; set;}
 
-    public Dbset <Comment> Comment {get; set;}
+    public DbSet <Comment> Comment {get; set;}
 
-    public Dbset <Draft> Draft {get; set;}
 
 }
 
