@@ -4,6 +4,7 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Login from './components/login.components.js'
 import User from './components/User.js'
+import Profile from './components/Profile.js'
 function App() {
   return (
     <Router>
@@ -30,7 +31,8 @@ function App() {
               <Route exact path="/" element={<Login />} />
               <Route path="/sign-in" element={<Login />} />
               <Route path="/User" element={<User/>} />
-            </Routes>
+              <Route path="/Profile" element={<Profile/>}/>           
+               </Routes>
           </div>
         </div>
       </div>

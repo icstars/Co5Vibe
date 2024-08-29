@@ -2266,19 +2266,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DemetriusRobinson\\.nuget\\packages\\": {}
+    "C:\\Users\\IeshaRamos\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DemetriusRobinson\\Documents\\GitHub\\Co5Vibe\\backend\\EvaluatePro\\EvaluatePro.csproj",
+      "projectUniqueName": "C:\\Users\\IeshaRamos\\OneDrive - i.c.stars\\Documents\\Co5Vibe\\backend\\EvaluatePro\\EvaluatePro.csproj",
       "projectName": "EvaluatePro",
-      "projectPath": "C:\\Users\\DemetriusRobinson\\Documents\\GitHub\\Co5Vibe\\backend\\EvaluatePro\\EvaluatePro.csproj",
-      "packagesPath": "C:\\Users\\DemetriusRobinson\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DemetriusRobinson\\Documents\\GitHub\\Co5Vibe\\backend\\EvaluatePro\\obj\\",
+      "projectPath": "C:\\Users\\IeshaRamos\\OneDrive - i.c.stars\\Documents\\Co5Vibe\\backend\\EvaluatePro\\EvaluatePro.csproj",
+      "packagesPath": "C:\\Users\\IeshaRamos\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\IeshaRamos\\OneDrive - i.c.stars\\Documents\\Co5Vibe\\backend\\EvaluatePro\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\DemetriusRobinson\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\IeshaRamos\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"

@@ -69,10 +69,3 @@ body, html, .App, #root, .auth-wrapper {
   color: #167bff;
 }
 
-.login-screen {
-  background: #1C8EF9;
-  min-height: 100vh;
-  display: flex;
-  font-weight: 400;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
