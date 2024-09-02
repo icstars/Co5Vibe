@@ -97,3 +97,13 @@ C:\Users\DanielGonzalez\Documents\CSharpEnviroment\React-Dotnet\backend\Evaluate
 C:\Users\DanielGonzalez\Documents\CSharpEnviroment\React-Dotnet\backend\EvaluatePro\obj\Debug\net8.0\EvaluatePro.pdb
 C:\Users\DanielGonzalez\Documents\CSharpEnviroment\React-Dotnet\backend\EvaluatePro\obj\Debug\net8.0\EvaluatePro.genruntimeconfig.cache
 C:\Users\DanielGonzalez\Documents\CSharpEnviroment\React-Dotnet\backend\EvaluatePro\obj\Debug\net8.0\ref\EvaluatePro.dll
+C:\Users\DemetriusRobinson\Documents\GitHub\Co5Vibe\backend\EvaluatePro\obj\Debug\net8.0\EvaluatePro.csproj.AssemblyReference.cache
+C:\Users\DemetriusRobinson\Documents\GitHub\Co5Vibe\backend\EvaluatePro\obj\Debug\net8.0\EvaluatePro.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DemetriusRobinson\Documents\GitHub\Co5Vibe\backend\EvaluatePro\obj\Debug\net8.0\EvaluatePro.AssemblyInfoInputs.cache
+C:\Users\DemetriusRobinson\Documents\GitHub\Co5Vibe\backend\EvaluatePro\obj\Debug\net8.0\EvaluatePro.AssemblyInfo.cs
+C:\Users\DemetriusRobinson\Documents\GitHub\Co5Vibe\backend\EvaluatePro\obj\Debug\net8.0\EvaluatePro.csproj.CoreCompileInputs.cache
+C:\Users\DemetriusRobinson\Documents\GitHub\Co5Vibe\backend\EvaluatePro\obj\Debug\net8.0\EvaluatePro.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\DemetriusRobinson\Documents\GitHub\Co5Vibe\backend\EvaluatePro\obj\Debug\net8.0\EvaluatePro.sourcelink.json
+C:\Users\DemetriusRobinson\Documents\GitHub\Co5Vibe\backend\EvaluatePro\obj\Debug\net8.0\EvaluatePro.dll
+C:\Users\DemetriusRobinson\Documents\GitHub\Co5Vibe\backend\EvaluatePro\obj\Debug\net8.0\refint\EvaluatePro.dll
+C:\Users\DemetriusRobinson\Documents\GitHub\Co5Vibe\backend\EvaluatePro\obj\Debug\net8.0\EvaluatePro.pdb

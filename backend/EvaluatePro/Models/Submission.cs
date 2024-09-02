@@ -7,8 +7,9 @@ public class Submission {
     public required string Feedback{get;set;}
     public string? SubmissionComment { get; set; }
     public int RoleCheck { get; set; }
-    public bool IsDraft {get;set;}
+    public bool? IsDraft {get;set;}
 
+    public required User User { get; set; }
     public required Role Role { get; set; }
     public List<Score> Scores { get; set; } = new List<Score>();
 }   
