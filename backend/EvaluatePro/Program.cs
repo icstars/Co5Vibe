@@ -20,6 +20,16 @@ var app = builder.Build();
 app.UseCors();
 
 // Configure the HTTP request pipeline.
+// User:
+
+app.MapGet("/api/User", async (EvaluateProDbContext db)
+
+
+
+
+
+/*
+// Configure the HTTP request pipeline.
 // Get all Emmployees
 app.MapGet("/api/employees", async (EvaluateProDbContext db) => await db.Employees.Include(e => e.Criteria) .ToListAsync());
 //Create Employee
@@ -36,5 +46,5 @@ app.MapPost("/api/criteria", async (EvaluateProDbContext db, Criteria criteria) 
     await db.SaveChangesAsync();
     return Results.Created($"/api/criteria/{criteria.Id}", criteria);
 });
-
+*/
 app.Run();
