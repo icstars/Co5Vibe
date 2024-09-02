@@ -12,13 +12,6 @@ public class EvaluateProDbContext(DbContextOptions<EvaluateProDbContext> options
     public DbSet<Score> Score {get;set;}
     public DbSet<Submission> Submission {get;set;}
     public DbSet<User> User { get;set; }    
-        
-
-  
-    
-    
-
-
 }
 
 

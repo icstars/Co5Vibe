@@ -7,7 +7,7 @@ public class Convention{
     public int CommentID { get; set; }
 
     public required Category Category { get; set; }
-    public required Feedback Feedback { get; set; }
+    public List<Feedback> Feedbacks { get; set; } = new List<Feedback>();
     public required Score  Score { get; set; }
     public Comment? Comment { get; set; }
 

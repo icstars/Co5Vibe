@@ -6,6 +6,4 @@ public class Comment {
     public Submission? Submission { get; set; }
     public Category? Category { get; set; }
     public Convention? Convention { get; set; }
-
-
 }

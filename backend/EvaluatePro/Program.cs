@@ -19,11 +19,58 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 app.UseCors();
 
-// Configure the HTTP request pipeline.
-// User:
+// CRUD operations
+// Users: Create
+// Create a new user
+app.MapPost("/api/User", async (EvaluateProDbContext db, User user) =>
+{
+    db.User.Add(user);
+    await db.SaveChangesAsync();
+    return Results.Created($"/api/User/{user.Id}", user);
+});
 
-app.MapGet("/api/User", async (EvaluateProDbContext db)
+// User: Read
+// Read; get all
+app.MapGet("/api/User", async (EvaluateProDbContext db) => await db.User.ToListAsync());
 
+//Get Specific UserId
+app.MapGet("/api/User/{id:int}", async (EvaluateProDbContext db, int id) => 
+{
+    var user = await db.User.FindAsync(id);
+    return user is not null ? Results.Ok(user) : Results.NotFound();
+});
+
+//User: Update
+app.MapPut("/api/User/{id:int}", async (EvaluateProDbContext db, int id, User updatedUser) =>
+{
+    var user = await db.User.FindAsync(id);
+
+    if (user is null) return Results.NotFound();
+
+    user.FirstName = updatedUser.FirstName;
+    user.LastName = updatedUser.LastName;
+    user.Email = updatedUser.Email;
+    user.Title = updatedUser.Title;
+    user.RoleId = updatedUser.RoleId;
+    user.SupervisiorName = updatedUser.SupervisiorName;
+    user.IsActive = updatedUser.IsActive;
+    user.BirthDay = updatedUser.BirthDay;
+
+    await db.SaveChangesAsync();
+    return Results.Ok(user);
+});
+
+//User: Delete 
+app.MapDelete("/api/User/{id:int}", async (EvaluateProDbContext db, int id) =>
+{
+    var user = await db.User.FindAsync(id);
+    
+    if (user is null) return Results.NotFound();
+
+    db.User.Remove(user);
+    await db.SaveChangesAsync();
+    return Results.NoContent();
+});
 
 
 
