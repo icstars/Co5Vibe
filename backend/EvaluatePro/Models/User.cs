@@ -14,8 +14,7 @@ public class User
     public required bool IsActive { get; set;}
     public char Password {get;set;}
 
-    public Authentication? Authentication { get; set; }
     public Role? Role { get; set; }
+    public Authentication? Authentication { get; set; }
     public List<Submission> Submissions { get; set; } = new List<Submission>();
-
-   }
+ }

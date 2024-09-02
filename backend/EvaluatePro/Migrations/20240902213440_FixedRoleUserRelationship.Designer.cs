@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EvaluatePro.Migrations
 {
     [DbContext(typeof(EvaluateProDbContext))]
-    [Migration("20240902173251_MondayUpdate")]
-    partial class MondayUpdatepdate
+    [Migration("20240902213440_FixedRoleUserRelationship")]
+    partial class FixedRoleUserRelationship
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -188,15 +188,6 @@ namespace EvaluatePro.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("IsAdmin")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("IsEmpoyee")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("IsManager")
-                        .HasColumnType("int");
-
                     b.Property<string>("RoleId")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -258,13 +249,6 @@ namespace EvaluatePro.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Convention")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Feedback")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<bool?>("IsDraft")
                         .HasColumnType("tinyint(1)");
 
@@ -277,8 +261,11 @@ namespace EvaluatePro.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
-                    b.Property<string>("SubmissionComment")
-                        .HasColumnType("longtext");
+                    b.Property<int>("Score")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubmissionComment")
+                        .HasColumnType("int");
 
                     b.Property<int>("SubmitterId")
                         .HasColumnType("int");
@@ -325,11 +312,7 @@ namespace EvaluatePro.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(1)");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("RoleId1")
+                    b.Property<int>("RoleId")
                         .HasColumnType("int");
 
                     b.Property<string>("SupervisiorName")
@@ -339,9 +322,12 @@ namespace EvaluatePro.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("RoleId1");
+                    b.HasIndex("RoleId");
 
                     b.ToTable("User");
                 });
@@ -372,7 +358,7 @@ namespace EvaluatePro.Migrations
                         .IsRequired();
 
                     b.HasOne("Submission", "Submission")
-                        .WithMany()
+                        .WithMany("Categories")
                         .HasForeignKey("SubmissionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -395,7 +381,7 @@ namespace EvaluatePro.Migrations
             modelBuilder.Entity("Comment", b =>
                 {
                     b.HasOne("Submission", "Submission")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("SubmissionId");
 
                     b.Navigation("Submission");
@@ -485,7 +471,7 @@ namespace EvaluatePro.Migrations
                 {
                     b.HasOne("Role", "Role")
                         .WithMany("Users")
-                        .HasForeignKey("RoleId1")
+                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -523,6 +509,13 @@ namespace EvaluatePro.Migrations
                     b.Navigation("Conventions");
 
                     b.Navigation("Feedbacks");
+                });
+
+            modelBuilder.Entity("Submission", b =>
+                {
+                    b.Navigation("Categories");
+
+                    b.Navigation("Comments");
                 });
 
             modelBuilder.Entity("User", b =>
