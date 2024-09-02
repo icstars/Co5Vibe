@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EvaluatePro.Migrations
 {
     [DbContext(typeof(EvaluateProDbContext))]
-    [Migration("20240902173251_monday update")]
-    partial class mondayupdate
+    [Migration("20240902173251_MondayUpdate")]
+    partial class MondayUpdatepdate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EvaluatePro.Migrations
 {
     /// <inheritdoc />
-    public partial class mondayupdate : Migration
+    public partial class MondayUpdate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

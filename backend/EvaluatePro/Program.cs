@@ -205,6 +205,14 @@ app.MapDelete("/api/User/{id:int}", async (EvaluateProDbContext db, int id) =>
 });
 
 
+// Submission: Create********************************************************************************************
+// Create a new submission
+app.MapPost("/api/Submission", async (EvaluateProDbContext db, Submission submission) =>
+{
+    db.Submission.Add(submission);
+    await db.SaveChangesAsync();
+    return Results.Created($"/api/User/{submission.Id}", submission);
+});
 
 
 
