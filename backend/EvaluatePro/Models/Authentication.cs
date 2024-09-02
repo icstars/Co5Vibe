@@ -9,4 +9,6 @@ public class Authentication {
     public DateTime Expiration { get; set; }
    
     public bool IsRevoked { get; set; }
+    public required User User { get; set; }
+    
 }
