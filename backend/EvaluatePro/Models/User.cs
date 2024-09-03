@@ -13,9 +13,10 @@ public class User
     public string? SupervisiorName {get; set;}
     public required bool IsActive { get; set;}
     public char Password {get;set;}
+    public int Submission { get; set; }
 
-    public Authentication? Authentication { get; set; }
-    public Role? Role { get; set; }
+   // public required Role Role { get; set; }
     public List<Submission> Submissions { get; set; } = new List<Submission>();
-
-   }
+    public Authentication? Authentication { get; set; }
+    public List<Role> Roles { get; set; } = new List<Role>();
+ }

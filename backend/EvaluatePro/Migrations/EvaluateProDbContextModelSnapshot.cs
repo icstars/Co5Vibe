@@ -57,12 +57,14 @@ namespace EvaluatePro.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CommentId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ConventionId")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("ConventionId")
+                        .HasColumnType("int");
 
                     b.Property<int>("ScoreId")
                         .HasColumnType("int");
@@ -75,8 +77,7 @@ namespace EvaluatePro.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CommentId")
-                        .IsUnique();
+                    b.HasIndex("CommentId");
 
                     b.HasIndex("ScoreId");
 
@@ -95,20 +96,42 @@ namespace EvaluatePro.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("CommentType")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("SubmissionId")
+                    b.Property<int>("ConventionId")
                         .HasColumnType("int");
+
+                    b.Property<int>("SubmissionId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Text")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SubmissionId");
-
                     b.ToTable("Comment");
+                });
+
+            modelBuilder.Entity("CommentSubmission", b =>
+                {
+                    b.Property<int>("CommentsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubmissionsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CommentsId", "SubmissionsId");
+
+                    b.HasIndex("SubmissionsId");
+
+                    b.ToTable("CommentSubmission");
                 });
 
             modelBuilder.Entity("Convention", b =>
@@ -139,8 +162,7 @@ namespace EvaluatePro.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("CommentID")
-                        .IsUnique();
+                    b.HasIndex("CommentID");
 
                     b.HasIndex("ScoreId");
 
@@ -162,11 +184,11 @@ namespace EvaluatePro.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<long>("Feedbacktext")
-                        .HasColumnType("bigint");
-
                     b.Property<int>("ScoreId")
                         .HasColumnType("int");
+
+                    b.Property<long>("Text")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -185,18 +207,31 @@ namespace EvaluatePro.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
                     b.ToTable("Role");
+                });
+
+            modelBuilder.Entity("RoleUser", b =>
+                {
+                    b.Property<int>("RolesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("RolesId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("RoleUser");
                 });
 
             modelBuilder.Entity("Score", b =>
@@ -251,12 +286,8 @@ namespace EvaluatePro.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Convention")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Feedback")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
 
                     b.Property<bool?>("IsDraft")
                         .HasColumnType("tinyint(1)");
@@ -270,8 +301,11 @@ namespace EvaluatePro.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
-                    b.Property<string>("SubmissionComment")
-                        .HasColumnType("longtext");
+                    b.Property<int>("ScoreId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubmissionComment")
+                        .HasColumnType("int");
 
                     b.Property<int>("SubmitterId")
                         .HasColumnType("int");
@@ -318,9 +352,11 @@ namespace EvaluatePro.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(1)");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Submission")
+                        .HasColumnType("int");
 
                     b.Property<string>("SupervisiorName")
                         .HasColumnType("longtext");
@@ -328,6 +364,9 @@ namespace EvaluatePro.Migrations
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -348,8 +387,8 @@ namespace EvaluatePro.Migrations
             modelBuilder.Entity("Category", b =>
                 {
                     b.HasOne("Comment", "Comment")
-                        .WithOne("Category")
-                        .HasForeignKey("Category", "CommentId")
+                        .WithMany("Categories")
+                        .HasForeignKey("CommentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -360,7 +399,7 @@ namespace EvaluatePro.Migrations
                         .IsRequired();
 
                     b.HasOne("Submission", "Submission")
-                        .WithMany()
+                        .WithMany("Categories")
                         .HasForeignKey("SubmissionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -380,13 +419,19 @@ namespace EvaluatePro.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Comment", b =>
+            modelBuilder.Entity("CommentSubmission", b =>
                 {
-                    b.HasOne("Submission", "Submission")
+                    b.HasOne("Comment", null)
                         .WithMany()
-                        .HasForeignKey("SubmissionId");
+                        .HasForeignKey("CommentsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Submission");
+                    b.HasOne("Submission", null)
+                        .WithMany()
+                        .HasForeignKey("SubmissionsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Convention", b =>
@@ -398,8 +443,8 @@ namespace EvaluatePro.Migrations
                         .IsRequired();
 
                     b.HasOne("Comment", "Comment")
-                        .WithOne("Convention")
-                        .HasForeignKey("Convention", "CommentID")
+                        .WithMany("Conventions")
+                        .HasForeignKey("CommentID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -435,15 +480,19 @@ namespace EvaluatePro.Migrations
                     b.Navigation("Score");
                 });
 
-            modelBuilder.Entity("Role", b =>
+            modelBuilder.Entity("RoleUser", b =>
                 {
-                    b.HasOne("User", "Users")
-                        .WithOne("Role")
-                        .HasForeignKey("Role", "UserId")
+                    b.HasOne("Role", null)
+                        .WithMany()
+                        .HasForeignKey("RolesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Users");
+                    b.HasOne("User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ScoreSubmission", b =>
@@ -487,9 +536,9 @@ namespace EvaluatePro.Migrations
 
             modelBuilder.Entity("Comment", b =>
                 {
-                    b.Navigation("Category");
+                    b.Navigation("Categories");
 
-                    b.Navigation("Convention");
+                    b.Navigation("Conventions");
                 });
 
             modelBuilder.Entity("Convention", b =>
@@ -511,12 +560,14 @@ namespace EvaluatePro.Migrations
                     b.Navigation("Feedbacks");
                 });
 
+            modelBuilder.Entity("Submission", b =>
+                {
+                    b.Navigation("Categories");
+                });
+
             modelBuilder.Entity("User", b =>
                 {
                     b.Navigation("Authentication");
-
-                    b.Navigation("Role")
-                        .IsRequired();
 
                     b.Navigation("Submissions");
                 });

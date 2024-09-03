@@ -2,7 +2,7 @@ public class Feedback{
 
     public int Id {get; set;}
     public required string FeedbackId {get;set;}
-    public required long Feedbacktext {get; set;}
+    public required long Text {get; set;}
     public int ConventionId {get;set;}
     public int ScoreId {get;set;}
     

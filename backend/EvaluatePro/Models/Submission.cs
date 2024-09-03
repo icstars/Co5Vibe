@@ -3,10 +3,12 @@ public class Submission {
     public int SubmitterId { get; set; }
     public int ReceiverId { get; set; }
     public required string Category{get;set;}
-    public int Score {get;set;}
+    public int ScoreId {get;set;}
     public int SubmissionComment { get; set; }
     public int RoleCheck { get; set; }
     public bool? IsDraft {get;set;}
+    public int CategoryId { get; set; }
+
 
     public required User User { get; set; }
     public required Role Role { get; set; }

@@ -7,16 +7,32 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EvaluatePro.Migrations
 {
     /// <inheritdoc />
-    public partial class MondayUpdate : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Criterias");
+            migrationBuilder.AlterDatabase()
+                .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.DropTable(
-                name: "Employees");
+            migrationBuilder.CreateTable(
+                name: "Comment",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    SubmissionId = table.Column<int>(type: "int", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    ConventionId = table.Column<int>(type: "int", nullable: false),
+                    CommentType = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Text = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comment", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "Role",
@@ -26,9 +42,7 @@ namespace EvaluatePro.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     RoleId = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    IsAdmin = table.Column<int>(type: "int", nullable: true),
-                    IsManager = table.Column<int>(type: "int", nullable: true),
-                    IsEmpoyee = table.Column<int>(type: "int", nullable: true)
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -59,6 +73,7 @@ namespace EvaluatePro.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<int>(type: "int", nullable: false),
                     FirstName = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     LastName = table.Column<string>(type: "longtext", nullable: false)
@@ -68,21 +83,19 @@ namespace EvaluatePro.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Title = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    RoleId = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    RoleId = table.Column<int>(type: "int", nullable: false),
                     SupervisiorName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsActive = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     Password = table.Column<string>(type: "varchar(1)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    RoleId1 = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_User", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_User_Role_RoleId1",
-                        column: x => x.RoleId1,
+                        name: "FK_User_Role_RoleId",
+                        column: x => x.RoleId,
                         principalTable: "Role",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -123,14 +136,11 @@ namespace EvaluatePro.Migrations
                     ReceiverId = table.Column<int>(type: "int", nullable: false),
                     Category = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Convention = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Feedback = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    SubmissionComment = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ScoreId = table.Column<int>(type: "int", nullable: false),
+                    SubmissionComment = table.Column<int>(type: "int", nullable: false),
                     RoleCheck = table.Column<int>(type: "int", nullable: false),
                     IsDraft = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     RoleId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -153,59 +163,13 @@ namespace EvaluatePro.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Comment",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    CommentType = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    SubmissionId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Comment", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Comment_Submission_SubmissionId",
-                        column: x => x.SubmissionId,
-                        principalTable: "Submission",
-                        principalColumn: "Id");
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "ScoreSubmission",
-                columns: table => new
-                {
-                    ScoresId = table.Column<int>(type: "int", nullable: false),
-                    SubmissionsId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ScoreSubmission", x => new { x.ScoresId, x.SubmissionsId });
-                    table.ForeignKey(
-                        name: "FK_ScoreSubmission_Score_ScoresId",
-                        column: x => x.ScoresId,
-                        principalTable: "Score",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ScoreSubmission_Submission_SubmissionsId",
-                        column: x => x.SubmissionsId,
-                        principalTable: "Submission",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "Category",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ConventionId = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    ConventionId = table.Column<int>(type: "int", nullable: false),
                     SubmissionId = table.Column<int>(type: "int", nullable: false),
                     ScoreId = table.Column<int>(type: "int", nullable: false),
                     CommentId = table.Column<int>(type: "int", nullable: false),
@@ -236,6 +200,56 @@ namespace EvaluatePro.Migrations
                         name: "FK_Category_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "CommentSubmission",
+                columns: table => new
+                {
+                    CommentsId = table.Column<int>(type: "int", nullable: false),
+                    SubmissionsId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CommentSubmission", x => new { x.CommentsId, x.SubmissionsId });
+                    table.ForeignKey(
+                        name: "FK_CommentSubmission_Comment_CommentsId",
+                        column: x => x.CommentsId,
+                        principalTable: "Comment",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CommentSubmission_Submission_SubmissionsId",
+                        column: x => x.SubmissionsId,
+                        principalTable: "Submission",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "ScoreSubmission",
+                columns: table => new
+                {
+                    ScoresId = table.Column<int>(type: "int", nullable: false),
+                    SubmissionsId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ScoreSubmission", x => new { x.ScoresId, x.SubmissionsId });
+                    table.ForeignKey(
+                        name: "FK_ScoreSubmission_Score_ScoresId",
+                        column: x => x.ScoresId,
+                        principalTable: "Score",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ScoreSubmission_Submission_SubmissionsId",
+                        column: x => x.SubmissionsId,
+                        principalTable: "Submission",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -286,7 +300,7 @@ namespace EvaluatePro.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     FeedbackId = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Feedbacktext = table.Column<long>(type: "bigint", nullable: false),
+                    Text = table.Column<long>(type: "bigint", nullable: false),
                     ConventionId = table.Column<int>(type: "int", nullable: false),
                     ScoreId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -317,8 +331,7 @@ namespace EvaluatePro.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Category_CommentId",
                 table: "Category",
-                column: "CommentId",
-                unique: true);
+                column: "CommentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Category_ScoreId",
@@ -336,9 +349,9 @@ namespace EvaluatePro.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comment_SubmissionId",
-                table: "Comment",
-                column: "SubmissionId");
+                name: "IX_CommentSubmission_SubmissionsId",
+                table: "CommentSubmission",
+                column: "SubmissionsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Convention_CategoryId",
@@ -348,8 +361,7 @@ namespace EvaluatePro.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Convention_CommentID",
                 table: "Convention",
-                column: "CommentID",
-                unique: true);
+                column: "CommentID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Convention_ScoreId",
@@ -382,9 +394,9 @@ namespace EvaluatePro.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_User_RoleId1",
+                name: "IX_User_RoleId",
                 table: "User",
-                column: "RoleId1");
+                column: "RoleId");
         }
 
         /// <inheritdoc />
@@ -392,6 +404,9 @@ namespace EvaluatePro.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Authentication");
+
+            migrationBuilder.DropTable(
+                name: "CommentSubmission");
 
             migrationBuilder.DropTable(
                 name: "Feedback");
@@ -419,61 +434,6 @@ namespace EvaluatePro.Migrations
 
             migrationBuilder.DropTable(
                 name: "Role");
-
-            migrationBuilder.CreateTable(
-                name: "Employees",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false),
-                    Email = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Fname = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    IsMAnager = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    Lname = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Title = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Employees", x => x.id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Criterias",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false),
-                    Criteria1 = table.Column<int>(type: "int", nullable: false),
-                    Email = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Employeeid = table.Column<int>(type: "int", nullable: true),
-                    FName = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    IsManager = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    LName = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Title = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    score = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Criterias", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Criterias_Employees_Employeeid",
-                        column: x => x.Employeeid,
-                        principalTable: "Employees",
-                        principalColumn: "id");
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Criterias_Employeeid",
-                table: "Criterias",
-                column: "Employeeid");
         }
     }
 }
