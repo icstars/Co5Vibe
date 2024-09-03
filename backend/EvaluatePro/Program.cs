@@ -214,7 +214,83 @@ app.MapPost("/api/Submission", async (EvaluateProDbContext db, Submission submis
     return Results.Created($"/api/User/{submission.Id}", submission);
 });
 
+// Submission: Get*************************************************************************************************
+// Read; get all sub'
+app.MapGet("/api/Submission", async (EvaluateProDbContext db) => await db.Submission.ToListAsync(
+));
+// get all sub' by category
+app.MapGet("/api/Submission/Category/{categoryId:int}", async (EvaluateProDbContext db, int categoryId) => 
+{
+    var submissions = await db.Submission
+                              .Where(s => s.CategoryId == categoryId)
+                              .ToListAsync();
+    return submissions.Any() ? Results.Ok(submissions) : Results.NotFound();
+});
+// by Score
+app.MapGet("/api/Submission/Score/{ScoreId:int}", async (EvaluateProDbContext db, int scoreId) => 
+{
+    var submissions = await db.Submission
+                              .Where(s => s.ScoreId == scoreId)
+                              .ToListAsync();
+    return submissions.Any() ? Results.Ok(submissions) : Results.NotFound();
+});
+// by person proforming submission
+app.MapGet("/api/Submission/BySubmitter/{SubmitterId:int}", async (EvaluateProDbContext db, int submitterId) => 
+{
+    var submissions = await db.Submission
+                              .Where(s => s.SubmitterId == submitterId)
+                              .ToListAsync();
+    return submissions.Any() ? Results.Ok(submissions) : Results.NotFound();
+});
+// draft get by submitter
+app.MapGet("/api/Submission/User/{SubmitterId:int}/Drafts", async (EvaluateProDbContext db, int submitterId) => 
+{
+    var submissions = await db.Submission
+                              .Where(s => s.SubmitterId == submitterId && s.IsDraft == true)
+                              .ToListAsync();
+    return submissions.Any() ? Results.Ok(submissions) : Results.NotFound();
+});
 
+// by person reciving submission
+app.MapGet("/api/Submission/ByReceiver/{ReceiverId:int}", async (EvaluateProDbContext db, int receiverId) => 
+{
+    var submissions = await db.Submission
+                              .Where(s => s.ReceiverId == receiverId)
+                              .ToListAsync();
+    return submissions.Any() ? Results.Ok(submissions) : Results.NotFound();
+});
+// by Draft
+app.MapGet("/api/Submission/User/{IsDraft:bool}", async (EvaluateProDbContext db, bool isDraft) => 
+{
+    var submissions = await db.Submission
+                              .Where(s => s.IsDraft == isDraft)
+                              .ToListAsync();
+    return submissions.Any() ? Results.Ok(submissions) : Results.NotFound();
+});
+
+// Create Category****************************************************************************************
+app.MapPost("/api/Category", async (EvaluateProDbContext db, Category category) =>
+{
+    db.Category.Add(category);
+    await db.SaveChangesAsync();
+    return Results.Created($"/api/User/{category.Id}", category);
+});
+// Get Category
+// Retrieve all categories
+app.MapGet("/api/Category", async (EvaluateProDbContext db) => 
+{
+    var categories = await db.Category.ToListAsync();
+    return categories.Any() ? Results.Ok(categories) : Results.NotFound();
+});
+
+// Retrieve category by CategoryId
+app.MapGet("/api/Category/{CategoryId:int}", async (EvaluateProDbContext db, int categoryId) => 
+{
+    var category = await db.Category
+                           .Where(c => c.CategoryId == categoryId)
+                           .FirstOrDefaultAsync();
+    return category != null ? Results.Ok(category) : Results.NotFound();
+});
 
 
 /*
