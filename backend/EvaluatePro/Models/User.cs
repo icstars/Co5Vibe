@@ -9,7 +9,7 @@ public class User
     public required string Email { get; set;}
     public required string Title { get; set;}
     public required int RoleId { get; set;} 
-    public string? SupervisiorName {get; set;}
+    public string? SupervisorName {get; set;}
     public required bool IsActive { get; set;}
     public char Password {get;set;}
 
