@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import '../navigations/NavBar.css';
+import '../misc/login.css';
 export default class Login extends Component {
   
     constructor(props) {
@@ -18,13 +19,18 @@ export default class Login extends Component {
       const { email, password } = this.state;
   
       
-      if (email === "user@example.com" && password === "password") {
+      if (email === "Kevin@example.com" && password === "password") {
       
         window.location.href ='/User'; 
+
+      } else if (email === "Demetrius@example.com" && password === "password") {
+        window.location.href = '/Profile';
+      } else if (email === "Roann@example.com" && password === "password") {
+        window.location.href = '/Manager';
       } else {
         alert('Invalid credentials');
       }
-    }
+    };
   
     handleChange = (event) => {
       this.setState({ [event.target.name]: event.target.value });
