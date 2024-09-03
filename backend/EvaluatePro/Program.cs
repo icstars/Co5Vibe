@@ -29,7 +29,7 @@ app.MapPost("/api/User", async (EvaluateProDbContext db, User user) =>
     return Results.Created($"/api/User/{user.Id}", user);
 });
 
-// User: Get     *************************************************************************************************
+// User: Get     
 // Read; get all
 app.MapGet("/api/User", async (EvaluateProDbContext db) => await db.User.ToListAsync());
 
@@ -89,7 +89,7 @@ app.MapGet("/api/User/{id:int}/Password", async (EvaluateProDbContext db, int id
 
 
 
-//User: Updates by specific id properites *******************************************************************************
+//User: Updates by specific id properites 
 app.MapPut("/api/User/{id:int}/FirstName", async (EvaluateProDbContext db, int id, string FirstName) =>
 {
     var user = await db.User.FindAsync(id);
@@ -192,7 +192,7 @@ app.MapPut("/api/User/{id:int}/Password", async (EvaluateProDbContext db, int id
     return Results.Ok(user);
 });
 
-//User: Delete *************************************************************************************************
+//User: Delete 
 app.MapDelete("/api/User/{id:int}", async (EvaluateProDbContext db, int id) =>
 {
     var user = await db.User.FindAsync(id);
@@ -214,7 +214,7 @@ app.MapPost("/api/Submission", async (EvaluateProDbContext db, Submission submis
     return Results.Created($"/api/User/{submission.Id}", submission);
 });
 
-// Submission: Get*************************************************************************************************
+// Submission: Get
 // Read; get all sub'
 app.MapGet("/api/Submission", async (EvaluateProDbContext db) => await db.Submission.ToListAsync(
 ));
@@ -275,7 +275,6 @@ app.MapPost("/api/Category", async (EvaluateProDbContext db, Category category) 
     await db.SaveChangesAsync();
     return Results.Created($"/api/User/{category.Id}", category);
 });
-// Get Category
 // Retrieve all categories
 app.MapGet("/api/Category", async (EvaluateProDbContext db) => 
 {
@@ -291,6 +290,133 @@ app.MapGet("/api/Category/{CategoryId:int}", async (EvaluateProDbContext db, int
                            .FirstOrDefaultAsync();
     return category != null ? Results.Ok(category) : Results.NotFound();
 });
+
+// Conventions: Create********************************************************************************************
+app.MapPost("/api/Convention", async (EvaluateProDbContext db, Convention convention) =>
+{
+    db.Convention.Add(convention);
+    await db.SaveChangesAsync();
+    return Results.Created($"/api/Convention/{convention.Id}", convention);
+});
+// get all conventions
+app.MapGet("/api/Convention", async (EvaluateProDbContext db) =>
+{
+    var conventions = await db.Convention.ToListAsync();
+    return Results.Ok(conventions);
+});
+
+ // to get a single convention
+ app.MapGet("/api/Convention/{id:int}", async (EvaluateProDbContext db, int id) =>
+{
+    var convention = await db.Convention.FindAsync(id);
+    return convention is not null ? Results.Ok(convention) : Results.NotFound();
+});
+//PUT,updates a single convention
+app.MapPut("/api/Convention/{id:int}", async (EvaluateProDbContext db, int id, Convention updatedConvention) =>
+{
+    var convention = await db.Convention.FindAsync(id);
+
+    if (convention is null) return Results.NotFound();
+
+    // Update the properties of the found convention with the new values
+    convention.CategoryId = updatedConvention.CategoryId;
+    convention.ConventionId = updatedConvention.ConventionId;
+
+    await db.SaveChangesAsync();
+    return Results.Ok(convention);
+});
+//to update the score to a specific convention
+app.MapPut("/api/Convention/{id:int}/Score", async (EvaluateProDbContext db, int id, int newScoreId) =>
+{
+    var convention = await db.Convention.FindAsync(id);
+
+    if (convention is null) return Results.NotFound();
+
+    convention.ScoreId = newScoreId;
+
+    await db.SaveChangesAsync();
+    return Results.Ok(convention);
+});
+//COMMMENTS**********************************************************************************
+//get a certian comment by id
+app.MapGet("/api/Comment/{id:int}", async (EvaluateProDbContext db, int id) => 
+{
+    var comment = await db.Comment.FindAsync(id);
+    return comment is not null ? Results.Ok(comment) : Results.NotFound();
+});
+
+// will get comment from any of the 3 levels, submission,category,convention. 
+app.MapGet("/api/Comment", async (EvaluateProDbContext db, int? submissionId, int? categoryId, int? conventionId) => 
+{
+    var query = db.Comment.AsQueryable();
+
+    if (submissionId.HasValue)
+        query = query.Where(c => c.SubmissionId == submissionId.Value);
+
+    if (categoryId.HasValue)
+        query = query.Where(c => c.CategoryId == categoryId.Value);
+
+    if (conventionId.HasValue)
+        query = query.Where(c => c.ConventionId == conventionId.Value);
+
+    var comment = await query.FirstOrDefaultAsync();
+
+    return comment is not null ? Results.Ok(comment) : Results.NotFound();
+});
+// Create any level  comments
+app.MapPost("/api/Comment", async (EvaluateProDbContext db, int? submissionId, int? categoryId, int? conventionId, Comment newComment) =>
+{
+    if (submissionId.HasValue)
+        newComment.SubmissionId = submissionId.Value;
+
+    if (categoryId.HasValue)
+        newComment.CategoryId = categoryId.Value;
+
+    if (conventionId.HasValue)
+        newComment.ConventionId = conventionId.Value;
+
+    db.Comment.Add(newComment);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"/api/Comment/{newComment.Id}", newComment);
+});
+//update any level comment
+app.MapPut("/api/Comment", async (EvaluateProDbContext db, int? submissionId, int? categoryId, int? conventionId, Comment updatedComment) =>
+{
+    var query = db.Comment.AsQueryable();
+
+    if (submissionId.HasValue)
+        query = query.Where(c => c.SubmissionId == submissionId.Value);
+
+    if (categoryId.HasValue)
+        query = query.Where(c => c.CategoryId == categoryId.Value);
+
+    if (conventionId.HasValue)
+        query = query.Where(c => c.ConventionId == conventionId.Value);
+
+    var comment = await query.FirstOrDefaultAsync();
+
+    if (comment is null) return Results.NotFound();
+
+    comment.Text = updatedComment.Text; 
+
+    await db.SaveChangesAsync();
+    return Results.Ok(comment);
+});
+
+
+//FEEDBACK************************************************************************************
+
+//ROLE*****************************************************************************************
+
+//SCORE****************************************************************************************
+
+//AUTHENTICATION*******************************************************************************
+
+
+
+
+
 
 
 /*

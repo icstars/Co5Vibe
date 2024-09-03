@@ -3,7 +3,6 @@ using System;
 public class User
 {
     public int Id { get; set; }
-    public int UserId { get; set; }
     public required string FirstName { get; set; }
     public required string LastName { get; set; }
     public DateTime BirthDay {get; set;}
@@ -14,7 +13,7 @@ public class User
     public required bool IsActive { get; set;}
     public char Password {get;set;}
 
-    public Role? Role { get; set; }
+    public required Role Role { get; set; }
     public Authentication? Authentication { get; set; }
     public List<Submission> Submissions { get; set; } = new List<Submission>();
  }
