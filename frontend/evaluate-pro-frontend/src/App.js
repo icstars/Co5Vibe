@@ -2,9 +2,10 @@ import React from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import Login from './components/login.components.js'
-import User from './components/User.js'
-import Profile from './components/Profile.js'
+import Login from './components/pages/login.js'
+import User from './components/pages/Admin.js'
+import Profile from './components/pages/Profile.js'
+import Manager from './components/pages/Manager.js'
 function App() {
   return (
     <Router>
@@ -18,7 +19,7 @@ function App() {
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                   <Link className="nav-link" to={'/sign-in'}>
-                    Login
+                    Home
                   </Link>
                 </li>
               </ul>
@@ -31,7 +32,8 @@ function App() {
               <Route exact path="/" element={<Login />} />
               <Route path="/sign-in" element={<Login />} />
               <Route path="/User" element={<User/>} />
-              <Route path="/Profile" element={<Profile/>}/>           
+              <Route path="/Profile" element={<Profile/>}/>
+              <Route path="/Manager" element={<Manager/>}/>           
                </Routes>
           </div>
         </div>

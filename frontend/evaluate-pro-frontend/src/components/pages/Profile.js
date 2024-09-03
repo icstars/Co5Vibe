@@ -2,8 +2,8 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 const Profile = () => {
   return (
-<section style={{ backgroundColor: "#eee" }}>
-  <div className="container py-5">
+<section style={{ backgroundColor: "#eee",  minHeight: '100vh', width: '100vw'  }}>
+  <div className="container-fluid">
     <div className="row">
       <div className="col">
         <nav
