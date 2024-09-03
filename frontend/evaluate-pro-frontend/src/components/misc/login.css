@@ -23,7 +23,7 @@ body, html, .App, #root, .auth-wrapper {
 }
 
 .navbar-logo {
-  background-image: url(C:\Users\DanielGonzalez\Documents\CSharpEnviroment\React-Dotnet\frontend\evaluate-pro-frontend\src\img\Co5logo.png);
+  background-image: url(../../img/Co5logo.png);
   background-repeat: no-repeat; 
   background-size: contain; 
   padding-left: 20px;
