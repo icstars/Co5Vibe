@@ -23,7 +23,7 @@ function App() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className={`nav-link d-none${localStorage.email = "Kevin@example.com"}`} to={'/User'}>
+                  <Link className={`nav-link ${localStorage.email != "Kevin@example.com" && "d-none" }`} to={'/User'}>
                     Edit User
                   </Link>
                 </li>

@@ -119,7 +119,7 @@ const Profile = () => {
                 <p className="mb-0">Phone</p>
               </div>
               <div className="col-sm-9">
-                <p className="text-muted mb-0">(097) 234-5678</p>
+                <p className="text-muted mb-0">(312) 123-5678</p>
               </div>
             </div>
             <hr />
@@ -128,7 +128,7 @@ const Profile = () => {
                 <p className="mb-0">Mobile</p>
               </div>
               <div className="col-sm-9">
-                <p className="text-muted mb-0">(098) 765-4321</p>
+                <p className="text-muted mb-0">(312) 123-4567</p>
               </div>
             </div>
             <hr />
