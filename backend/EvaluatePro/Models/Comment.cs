@@ -5,6 +5,7 @@ public class Comment {
     public int CategoryId {get;set;}
     public int ConventionId {get;set;}
     public bool CommentType {get; set;}
+<<<<<<< Updated upstream
     public long Text {get;set;}
 
    /* public Submission? Submission {get;set;}
