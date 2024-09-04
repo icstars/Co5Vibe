@@ -11,4 +11,5 @@ public class Category
     public required Score Score {get;set;}
     public Comment? Comment {get;set;}
     public required Submission Submission { get; set; }
-    public List<Convention> Conventions {get;set;} = new List<Convention>();}
+    public List<Convention> Conventions {get;set;} = new List<Convention>();
+    }

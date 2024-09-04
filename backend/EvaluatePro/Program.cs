@@ -158,13 +158,13 @@ app.MapPut("/api/User/{id:int}/RoleId", async (EvaluateProDbContext db, int id, 
     await db.SaveChangesAsync();
     return Results.Ok(user);
 });
-app.MapPut("/api/User/{id:int}/SupervisorName", async (EvaluateProDbContext db, int id, string? supervisorName) =>
+app.MapPut("/api/User/{id:int}/SupervisiorName", async (EvaluateProDbContext db, int id, string? supervisiorName) =>
 {
     var user = await db.User.FindAsync(id);
 
     if (user is null) return Results.NotFound();
 
-    user.SupervisorName = supervisorName;
+    user.SupervisorName = supervisiorName;
 
     await db.SaveChangesAsync();
     return Results.Ok(user);
@@ -401,18 +401,7 @@ app.MapPut("/api/Comment", async (EvaluateProDbContext db, int? submissionId, in
     comment.Text = updatedComment.Text; 
 
     await db.SaveChangesAsync();
-    return Results.Ok(comment);
-});
-
-
-//FEEDBACK************************************************************************************
-
-//ROLE*****************************************************************************************
-
-//SCORE****************************************************************************************
-
-//AUTHENTICATION*******************************************************************************
-
+    return Results.Ok(comment);}
 
 
 

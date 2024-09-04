@@ -1,6 +1,6 @@
 public class Convention{
-    public int Id {get; set;}
-    public required int ConventionId {get; set;}
+    public int id {get; set;}
+    public required string ConventionId {get; set;}
     public int CategoryId{get;set;}
     public int FeedbackId { get; set; }
     public int ScoreId { get; set; }
@@ -10,4 +10,6 @@ public class Convention{
     public List<Feedback> Feedbacks { get; set; } = new List<Feedback>();
     public required Score  Score { get; set; }
     public Comment? Comment { get; set; }
+
+
 }
