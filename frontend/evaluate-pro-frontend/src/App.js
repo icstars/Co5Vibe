@@ -22,6 +22,11 @@ function App() {
                     Home
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className={`nav-link d-none${localStorage.email = "Kevin@example.com"}`} to={'/User'}>
+                    Edit User
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>

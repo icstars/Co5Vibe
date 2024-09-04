@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../navigations/NavBar.css";
 import "../misc/login.css";
+
+localStorage.test = null;
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -17,11 +20,23 @@ export default class Login extends Component {
     const { email, password } = this.state;
 
     if (email === "Kevin@example.com" && password === "password") {
-      window.location.href = "/User";
+      window.location.href = "/Profile";
+      localStorage.name = "Kevin Taylor"
+      localStorage.title = "Product Engineer Lead"
+      localStorage.address = "Chicago,IL"
+      localStorage.email = "Kevin@example.com"
     } else if (email === "Demetrius@example.com" && password === "password") {
       window.location.href = "/Profile";
+      localStorage.name = "Demetrius Robinson"
+      localStorage.title = "Junior Developer"
+      localStorage.address = "Chicago,IL"
+      localStorage.email = "Demetrius@example.com"
     } else if (email === "Roann@example.com" && password === "password") {
-      window.location.href = "/Manager";
+      window.location.href = "/Profile";
+      localStorage.name = "Roann Yanes"
+      localStorage.title = "Developer Specialist"
+      localStorage.address = "Chicago,IL"
+      localStorage.email = "Roann@example.com"
     } else {
       alert("Invalid credentials");
     }

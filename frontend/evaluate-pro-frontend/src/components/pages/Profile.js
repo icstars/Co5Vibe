@@ -34,9 +34,9 @@ const Profile = () => {
               className="rounded-circle img-fluid"
               style={{ width: 150 }}
             />
-            <h5 className="my-3">John Smith</h5>
-            <p className="text-muted mb-1">Full Stack Developer</p>
-            <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
+            <h5 className="my-3">{localStorage.name}</h5>
+            <p className="text-muted mb-1">{localStorage.title}</p>
+            <p className="text-muted mb-4">{localStorage.address}</p>
             <div className="d-flex justify-content-center mb-2">
               <button
                 type="button"
@@ -44,7 +44,7 @@ const Profile = () => {
                 data-mdb-ripple-init=""
                 className="btn btn-primary"
               >
-                Follow
+                Start Assessment
               </button>
               <button
                 type="button"
@@ -62,32 +62,32 @@ const Profile = () => {
             <ul className="list-group list-group-flush rounded-3">
               <li className="list-group-item d-flex justify-content-between align-items-center p-3">
                 <i className="fas fa-globe fa-lg text-warning" />
-                <p className="mb-0">https://mdbootstrap.com</p>
+                <p className="mb-0"></p>
               </li>
               <li className="list-group-item d-flex justify-content-between align-items-center p-3">
                 <i className="fab fa-github fa-lg text-body" />
-                <p className="mb-0">mdbootstrap</p>
+                <p className="mb-0"></p>
               </li>
               <li className="list-group-item d-flex justify-content-between align-items-center p-3">
                 <i
                   className="fab fa-twitter fa-lg"
                   style={{ color: "#55acee" }}
                 />
-                <p className="mb-0">@mdbootstrap</p>
+                <p className="mb-0"></p>
               </li>
               <li className="list-group-item d-flex justify-content-between align-items-center p-3">
                 <i
                   className="fab fa-instagram fa-lg"
                   style={{ color: "#ac2bac" }}
                 />
-                <p className="mb-0">mdbootstrap</p>
+                <p className="mb-0"></p>
               </li>
               <li className="list-group-item d-flex justify-content-between align-items-center p-3">
                 <i
                   className="fab fa-facebook-f fa-lg"
                   style={{ color: "#3b5998" }}
                 />
-                <p className="mb-0">mdbootstrap</p>
+                <p className="mb-0"></p>
               </li>
             </ul>
           </div>
@@ -101,7 +101,7 @@ const Profile = () => {
                 <p className="mb-0">Full Name</p>
               </div>
               <div className="col-sm-9">
-                <p className="text-muted mb-0">Johnatan Smith</p>
+                <p className="text-muted mb-0">{localStorage.name}</p>
               </div>
             </div>
             <hr />
@@ -110,7 +110,7 @@ const Profile = () => {
                 <p className="mb-0">Email</p>
               </div>
               <div className="col-sm-9">
-                <p className="text-muted mb-0">example@example.com</p>
+                <p className="text-muted mb-0">{localStorage.email}</p>
               </div>
             </div>
             <hr />
@@ -137,7 +137,7 @@ const Profile = () => {
                 <p className="mb-0">Address</p>
               </div>
               <div className="col-sm-9">
-                <p className="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                <p className="text-muted mb-0">{localStorage.address}</p>
               </div>
             </div>
           </div>
@@ -148,12 +148,12 @@ const Profile = () => {
               <div className="card-body">
                 <p className="mb-4">
                   <span className="text-primary font-italic me-1">
-                    assigment
+                    Assessment Progress
                   </span>{" "}
-                  Project Status
+                  
                 </p>
                 <p className="mb-1" style={{ fontSize: ".77rem" }}>
-                  Web Design
+                  Assessment
                 </p>
                 <div className="progress rounded" style={{ height: 5 }}>
                   <div
@@ -165,58 +165,10 @@ const Profile = () => {
                     aria-valuemax={100}
                   />
                 </div>
-                <p className="mt-4 mb-1" style={{ fontSize: ".77rem" }}>
-                  Website Markup
-                </p>
-                <div className="progress rounded" style={{ height: 5 }}>
-                  <div
-                    className="progress-bar"
-                    role="progressbar"
-                    style={{ width: "72%" }}
-                    aria-valuenow={72}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                  />
-                </div>
-                <p className="mt-4 mb-1" style={{ fontSize: ".77rem" }}>
-                  One Page
-                </p>
-                <div className="progress rounded" style={{ height: 5 }}>
-                  <div
-                    className="progress-bar"
-                    role="progressbar"
-                    style={{ width: "89%" }}
-                    aria-valuenow={89}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                  />
-                </div>
-                <p className="mt-4 mb-1" style={{ fontSize: ".77rem" }}>
-                  Mobile Template
-                </p>
-                <div className="progress rounded" style={{ height: 5 }}>
-                  <div
-                    className="progress-bar"
-                    role="progressbar"
-                    style={{ width: "55%" }}
-                    aria-valuenow={55}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                  />
-                </div>
-                <p className="mt-4 mb-1" style={{ fontSize: ".77rem" }}>
-                  Backend API
-                </p>
-                <div className="progress rounded mb-2" style={{ height: 5 }}>
-                  <div
-                    className="progress-bar"
-                    role="progressbar"
-                    style={{ width: "66%" }}
-                    aria-valuenow={66}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                  />
-                </div>
+                
+                
+               
+                
               </div>
             </div>
           </div>
@@ -225,12 +177,12 @@ const Profile = () => {
               <div className="card-body">
                 <p className="mb-4">
                   <span className="text-primary font-italic me-1">
-                    assigment
+                    Categories
                   </span>{" "}
-                  Project Status
+                  
                 </p>
                 <p className="mb-1" style={{ fontSize: ".77rem" }}>
-                  Web Design
+                  Teamwork
                 </p>
                 <div className="progress rounded" style={{ height: 5 }}>
                   <div
@@ -243,7 +195,7 @@ const Profile = () => {
                   />
                 </div>
                 <p className="mt-4 mb-1" style={{ fontSize: ".77rem" }}>
-                  Website Markup
+                  Communication
                 </p>
                 <div className="progress rounded" style={{ height: 5 }}>
                   <div
@@ -256,7 +208,7 @@ const Profile = () => {
                   />
                 </div>
                 <p className="mt-4 mb-1" style={{ fontSize: ".77rem" }}>
-                  One Page
+                  Knowledge Application/Problem Solving
                 </p>
                 <div className="progress rounded" style={{ height: 5 }}>
                   <div
@@ -269,7 +221,7 @@ const Profile = () => {
                   />
                 </div>
                 <p className="mt-4 mb-1" style={{ fontSize: ".77rem" }}>
-                  Mobile Template
+                Code Aesthetics
                 </p>
                 <div className="progress rounded" style={{ height: 5 }}>
                   <div
@@ -282,7 +234,7 @@ const Profile = () => {
                   />
                 </div>
                 <p className="mt-4 mb-1" style={{ fontSize: ".77rem" }}>
-                  Backend API
+                  Best Practices
                 </p>
                 <div className="progress rounded mb-2" style={{ height: 5 }}>
                   <div
