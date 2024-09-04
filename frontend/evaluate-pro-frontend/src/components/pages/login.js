@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "../navigations/NavBar.css";
 import "../misc/login.css";
 
-localStorage.test = null;
 
 export default class Login extends Component {
   constructor(props) {
