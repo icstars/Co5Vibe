@@ -7,6 +7,8 @@ public class Comment {
     public bool CommentType {get; set;}
 <<<<<<< Updated upstream
     public long Text {get;set;}
+=======
+>>>>>>> Stashed changes
 
    /* public Submission? Submission {get;set;}
     public Category? Category {get;set;}

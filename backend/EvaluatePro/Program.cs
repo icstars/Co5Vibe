@@ -176,6 +176,7 @@ app.MapPut("/api/User/{id:int}/SupervisiorName", async (EvaluateProDbContext db,
 <<<<<<< Updated upstream
     user.SupervisiorName = supervisiorName;
 =======
+    user.SupervisorName = supervisiorName;
 >>>>>>> Stashed changes
 
     await db.SaveChangesAsync();
