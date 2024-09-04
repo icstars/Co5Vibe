@@ -27,7 +27,7 @@ const User = () => {
         lastName,
         email,
         title,
-      , supervisorName})
+      supervisorName})
       .then((response) => setUsers([...users, response.data]))
       .catch((error) => console.error(error));
   };
