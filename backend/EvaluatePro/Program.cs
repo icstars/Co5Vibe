@@ -42,6 +42,7 @@ app.MapGet("/api/User/{id:int}", async (EvaluateProDbContext db, int id) =>
 <<<<<<< Updated upstream
 
 =======
+/*
 >>>>>>> Stashed changes
 app.MapGet("/api/User/{id:int}/FirstName", async (EvaluateProDbContext db, int id) =>
 {
@@ -80,6 +81,10 @@ app.MapGet("/api/User/{id:int}/SupervisiorName", async (EvaluateProDbContext db,
     var user = await db.User.FindAsync(id);
     return user is not null ? Results.Ok(user.SupervisiorName) : Results.NotFound();
 =======
+app.MapGet("/api/User/{id:int}/SupervisorName", async (EvaluateProDbContext db, int id) =>
+{
+    var user = await db.User.FindAsync(id);
+    return user is not null ? Results.Ok(user.SupervisorName) : Results.NotFound();
 >>>>>>> Stashed changes
 });
 app.MapGet("/api/User/{id:int}/IsActive", async (EvaluateProDbContext db, int id) =>
@@ -94,6 +99,7 @@ app.MapGet("/api/User/{id:int}/Password", async (EvaluateProDbContext db, int id
 <<<<<<< Updated upstream
 });
 =======
+});*/
 >>>>>>> Stashed changes
 
 

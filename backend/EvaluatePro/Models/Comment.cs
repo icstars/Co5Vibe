@@ -8,6 +8,10 @@ public class Comment {
 <<<<<<< Updated upstream
     public long Text {get;set;}
 =======
+    public int SubmissionId { get; set; }
+    public int CategoryId { get; set; }
+    public int ConventionId { get; set; }
+    public int Text { get; set; }
 >>>>>>> Stashed changes
 
    /* public Submission? Submission {get;set;}
