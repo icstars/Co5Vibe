@@ -10,6 +10,8 @@ const User = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [title, setTitle] = useState("");
+    const [supervisorName, setSupervisorName] = useState('');
+
 
   useEffect(() => {
     axios
@@ -25,7 +27,7 @@ const User = () => {
         lastName,
         email,
         title,
-      })
+      supervisorName})
       .then((response) => setUsers([...users, response.data]))
       .catch((error) => console.error(error));
   };
@@ -98,6 +100,17 @@ const User = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
+                <div className="mb-3">
+                    <label htmlFor="text" className="form-label">Supervisor Name</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="supervisorName"
+                        placeholder="Enter Supervisor Name"
+                        value={email}
+                        onChange={e => setSupervisorName(e.target.value)}
+                    />
+                </div>
           <div className="mb-3">
             <label htmlFor="title" className="form-label">
               Title
