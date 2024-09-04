@@ -18,7 +18,7 @@ public class User
 
     public bool IsManager { get; set; }
     
-    public string SupervisiorName {get; set;}
+    public string SupervisorName {get; set;}
 
     public bool IsActive { get; set;}
 

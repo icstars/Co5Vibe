@@ -12,7 +12,6 @@ public class User
     public string? SupervisorName {get; set;}
     public required bool IsActive { get; set;}
     public char Password {get;set;}
-
     public required Role Role { get; set; }
     public Authentication? Authentication { get; set; }
     public List<Submission> Submissions { get; set; } = new List<Submission>();

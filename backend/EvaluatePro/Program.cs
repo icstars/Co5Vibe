@@ -71,10 +71,10 @@ app.MapGet("/api/User/{id:int}/RoleId", async (EvaluateProDbContext db, int id) 
     var user = await db.User.FindAsync(id);
     return user is not null ? Results.Ok(user.RoleId) : Results.NotFound();
 });
-app.MapGet("/api/User/{id:int}/SupervisiorName", async (EvaluateProDbContext db, int id) =>
+app.MapGet("/api/User/{id:int}/SupervisorName", async (EvaluateProDbContext db, int id) =>
 {
     var user = await db.User.FindAsync(id);
-    return user is not null ? Results.Ok(user.SupervisiorName) : Results.NotFound();
+    return user is not null ? Results.Ok(user.SupervisorName) : Results.NotFound();
 });
 app.MapGet("/api/User/{id:int}/IsActive", async (EvaluateProDbContext db, int id) =>
 {
@@ -158,13 +158,13 @@ app.MapPut("/api/User/{id:int}/RoleId", async (EvaluateProDbContext db, int id, 
     await db.SaveChangesAsync();
     return Results.Ok(user);
 });
-app.MapPut("/api/User/{id:int}/SupervisiorName", async (EvaluateProDbContext db, int id, string? supervisiorName) =>
+app.MapPut("/api/User/{id:int}/SupervisorName", async (EvaluateProDbContext db, int id, string? supervisorName) =>
 {
     var user = await db.User.FindAsync(id);
 
     if (user is null) return Results.NotFound();
 
-    user.SupervisiorName = supervisiorName;
+    user.SupervisorName = supervisorName;
 
     await db.SaveChangesAsync();
     return Results.Ok(user);
