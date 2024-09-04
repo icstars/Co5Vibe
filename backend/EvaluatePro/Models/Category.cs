@@ -5,9 +5,9 @@ public class Category
     public int SubmissionId {get;set;}
     public int ScoreId {get;set;}
     public int CommentId { get; set; }
-    
+    public int User { get; set; }
 
-    public required User User { get; set; }
+    public List<User> Users {get;set;} = new List<User>();
     public required Score Score {get;set;}
     public Comment? Comment {get;set;}
     public required Submission Submission { get; set; }

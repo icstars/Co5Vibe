@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zOfW6cP0Oco=",
+  "dgSpecHash": "id/M88L5amU=",
   "success": true,
   "projectFilePath": "C:\\Users\\DemetriusRobinson\\Documents\\GitHub\\Co5Vibe\\backend\\EvaluatePro\\EvaluatePro.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "C:\\Users\\DemetriusRobinson\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.8\\microsoft.entityframeworkcore.analyzers.8.0.8.nupkg.sha512",
     "C:\\Users\\DemetriusRobinson\\.nuget\\packages\\microsoft.entityframeworkcore.design\\8.0.8\\microsoft.entityframeworkcore.design.8.0.8.nupkg.sha512",
     "C:\\Users\\DemetriusRobinson\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\8.0.8\\microsoft.entityframeworkcore.relational.8.0.8.nupkg.sha512",
+    "C:\\Users\\DemetriusRobinson\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\8.0.8\\microsoft.entityframeworkcore.tools.8.0.8.nupkg.sha512",
     "C:\\Users\\DemetriusRobinson\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\8.0.0\\microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\DemetriusRobinson\\.nuget\\packages\\microsoft.extensions.caching.memory\\8.0.0\\microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
     "C:\\Users\\DemetriusRobinson\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
