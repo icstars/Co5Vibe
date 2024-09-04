@@ -26,8 +26,11 @@ function App() {
             </div>
           </div>
         </nav>
+        <div className='p-5'>
+        
+        </div>
         <div className="auth-wrapper">
-          <div className="auth-inner">
+          
             <Routes>
               <Route exact path="/" element={<Login />} />
               <Route path="/sign-in" element={<Login />} />
@@ -35,7 +38,7 @@ function App() {
               <Route path="/Profile" element={<Profile/>}/>
               <Route path="/Manager" element={<Manager/>}/>           
                </Routes>
-          </div>
+          
         </div>
       </div>
     </Router>
