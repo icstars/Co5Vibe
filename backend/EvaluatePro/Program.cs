@@ -39,11 +39,7 @@ app.MapGet("/api/User/{id:int}", async (EvaluateProDbContext db, int id) =>
     var user = await db.User.FindAsync(id);
     return user is not null ? Results.Ok(user) : Results.NotFound();
 });
-<<<<<<< Updated upstream
 
-=======
-/*
->>>>>>> Stashed changes
 app.MapGet("/api/User/{id:int}/FirstName", async (EvaluateProDbContext db, int id) =>
 {
     var user = await db.User.FindAsync(id);
@@ -75,17 +71,10 @@ app.MapGet("/api/User/{id:int}/RoleId", async (EvaluateProDbContext db, int id) 
     var user = await db.User.FindAsync(id);
     return user is not null ? Results.Ok(user.RoleId) : Results.NotFound();
 });
-<<<<<<< Updated upstream
-app.MapGet("/api/User/{id:int}/SupervisiorName", async (EvaluateProDbContext db, int id) =>
-{
-    var user = await db.User.FindAsync(id);
-    return user is not null ? Results.Ok(user.SupervisiorName) : Results.NotFound();
-=======
 app.MapGet("/api/User/{id:int}/SupervisorName", async (EvaluateProDbContext db, int id) =>
 {
     var user = await db.User.FindAsync(id);
     return user is not null ? Results.Ok(user.SupervisorName) : Results.NotFound();
->>>>>>> Stashed changes
 });
 app.MapGet("/api/User/{id:int}/IsActive", async (EvaluateProDbContext db, int id) =>
 {
@@ -96,11 +85,7 @@ app.MapGet("/api/User/{id:int}/Password", async (EvaluateProDbContext db, int id
 {
     var user = await db.User.FindAsync(id);
     return user is not null ? Results.Ok(user.Password) : Results.NotFound();
-<<<<<<< Updated upstream
 });
-=======
-});*/
->>>>>>> Stashed changes
 
 
 
@@ -179,11 +164,7 @@ app.MapPut("/api/User/{id:int}/SupervisiorName", async (EvaluateProDbContext db,
 
     if (user is null) return Results.NotFound();
 
-<<<<<<< Updated upstream
-    user.SupervisiorName = supervisiorName;
-=======
     user.SupervisorName = supervisiorName;
->>>>>>> Stashed changes
 
     await db.SaveChangesAsync();
     return Results.Ok(user);
@@ -315,7 +296,7 @@ app.MapPost("/api/Convention", async (EvaluateProDbContext db, Convention conven
 {
     db.Convention.Add(convention);
     await db.SaveChangesAsync();
-    return Results.Created($"/api/Convention/{convention.ConventionId}", convention);
+    return Results.Created($"/api/Convention/{convention.Id}", convention);
 });
 // get all conventions
 app.MapGet("/api/Convention", async (EvaluateProDbContext db) =>
@@ -420,154 +401,30 @@ app.MapPut("/api/Comment", async (EvaluateProDbContext db, int? submissionId, in
     comment.Text = updatedComment.Text; 
 
     await db.SaveChangesAsync();
-    return Results.Ok(comment);
-});
+    return Results.Ok(comment);}
 
 
-//FEEDBACK************************************************************************************
-// to create a Feedback item
-app.MapPost("/api/Feedback", async (EvaluateProDbContext db, Feedback feedback) =>
-{
-    db.Feedback.Add(feedback);
+
+
+
+
+/*
+// Configure the HTTP request pipeline.
+// Get all Emmployees
+app.MapGet("/api/employees", async (EvaluateProDbContext db) => await db.Employees.Include(e => e.Criteria) .ToListAsync());
+//Create Employee
+app.MapPost("/api/employees", async (EvaluateProDbContext db, Employee employee) => {
+    db.Employees.Add(employee);
     await db.SaveChangesAsync();
-    return Results.Created($"/api/Feedback/{feedback.Id}", feedback);
+    return Results.Created($"/api/employees/{employee.Id}", employee);
 });
+app.MapGet("/api/criteria", async (EvaluateProDbContext db) => await db.Criterias.ToListAsync());
 
-//get a specific Feedback item
-app.MapGet("/api/Feedback/{id:int}", async (EvaluateProDbContext db, int id) => 
+app.MapPost("/api/criteria", async (EvaluateProDbContext db, Criteria criteria) =>
 {
-    var feedback = await db.Feedback.FindAsync(id);
-    return feedback is not null ? Results.Ok(feedback) : Results.NotFound();
-});
-//ROLE*****************************************************************************************
-// Creation of a Role
-app.MapPost("/api/Role", async (EvaluateProDbContext db, Role role) =>
-{
-    db.Role.Add(role);
+    db.Criterias.Add(criteria);
     await db.SaveChangesAsync();
-    return Results.Created($"/api/Role/{role.Id}", role);
+    return Results.Created($"/api/criteria/{criteria.Id}", criteria);
 });
-// to get by RoleId
-app.MapGet("/api/Role/{id:int}", async (EvaluateProDbContext db, int id) => 
-{
-    var role = await db.Role
-        .Include(r => r.Users)       
-        .FirstOrDefaultAsync(r => r.Id == id);
-
-    return role is not null ? Results.Ok(role) : Results.NotFound();
-});
-
-//To update a role
-app.MapPut("/api/Role/{id:int}", async (EvaluateProDbContext db, int id, Role updatedRole) =>
-{
-    var role = await db.Role.FindAsync(id);
-
-    if (role is null) return Results.NotFound();
-
-    role.RoleId = updatedRole.RoleId;
-
-    await db.SaveChangesAsync();
-    return Results.Ok(role);
-});
-//SCORE****************************************************************************************
-//Creat a score
-app.MapPost("/api/Score", async (EvaluateProDbContext db, Score score) =>
-{
-    db.Score.Add(score);
-    await db.SaveChangesAsync();
-    return Results.Created($"/api/Score/{score.Id}", score);
-});
-//READ, get all
-app.MapPost("/api/Score/{id:int}", async (int id, EvaluateProDbContext db, Score score) =>
-{
-    db.Score.Add(score);
-    await db.SaveChangesAsync();
-    return Results.Created($"/api/Score/{score.Id}", score);
-});
-//READ score by scoreid
-app.MapGet("/api/Score/{id:int}", async (EvaluateProDbContext db, int id) =>
-{
-    var score = await db.Score.FindAsync(id);
-    return score is not null ? Results.Ok(score) : Results.NotFound();
-});
-//Get score from eace level. 
-app.MapGet("/api/Score/Submission/{submissionId:int}", async (EvaluateProDbContext db, int submissionId) =>
-{
-    var scores = await db.Score.Where(s => s.SubmissionId == submissionId).ToListAsync();
-    return scores.Any() ? Results.Ok(scores) : Results.NotFound();
-});
-
-app.MapGet("/api/Score/Category/{categoryId:int}", async (EvaluateProDbContext db, int categoryId) =>
-{
-    var scores = await db.Score.Where(s => s.CategoryId == categoryId).ToListAsync();
-    return scores.Any() ? Results.Ok(scores) : Results.NotFound();
-});
-
-app.MapGet("/api/Score/Convention/{conventionId:int}", async (EvaluateProDbContext db, int conventionId) =>
-{
-    var scores = await db.Score.Where(s => s.ConventionId == conventionId).ToListAsync();
-    return scores.Any() ? Results.Ok(scores) : Results.NotFound();
-});
-// update score 
-app.MapPut("/api/Score/{id:int}", async (EvaluateProDbContext db, int id, Score updatedScore) =>
-{
-    var score = await db.Score.FindAsync(id);
-
-    if (score is null) return Results.NotFound();
-
-    score.ScoreId = updatedScore.ScoreId;
-    score.SubmissionId = updatedScore.SubmissionId;
-    score.CategoryId = updatedScore.CategoryId;
-    score.ConventionId = updatedScore.ConventionId;
-
-    await db.SaveChangesAsync();
-    return Results.Ok(score);
-});
-
-
-//AUTHENTICATION*******************************************************************************
-// Create
-app.MapPost("/api/Authentication", async (EvaluateProDbContext db, Authentication authentication) =>
-{
-    db.Authentication.Add(authentication);
-    await db.SaveChangesAsync();
-    return Results.Created($"/api/Authentication/{authentication.Id}", authentication);
-});
-// GET all
-app.MapGet("/api/Authentication", async (EvaluateProDbContext db) =>
-{
-    var authentications = await db.Authentication.ToListAsync();
-    return Results.Ok(authentications);
-});
-//GET single
-app.MapGet("/api/Authentication/{id:int}", async (EvaluateProDbContext db, int id) =>
-{
-    var authentication = await db.Authentication.FindAsync(id);
-    return authentication is not null ? Results.Ok(authentication) : Results.NotFound();
-});
-// Update important properties
-app.MapPut("/api/Authentication/{id:int}", async (EvaluateProDbContext db, int id, Authentication updatedAuthentication) =>
-{
-    var authentication = await db.Authentication.FindAsync(id);
-
-    if (authentication is null) return Results.NotFound();
-
-    authentication.Token = updatedAuthentication.Token;
-    authentication.Expiration = updatedAuthentication.Expiration;
-    authentication.IsRevoked = updatedAuthentication.IsRevoked;
-    authentication.UserId = updatedAuthentication.UserId;
-
-    await db.SaveChangesAsync();
-    return Results.Ok(authentication);
-});
-// Delete Auth'
-app.MapDelete("/api/Authentication/{id:int}", async (EvaluateProDbContext db, int id) =>
-{
-    var authentication = await db.Authentication.FindAsync(id);
-    if (authentication is null) return Results.NotFound();
-
-    db.Authentication.Remove(authentication);
-    await db.SaveChangesAsync();
-    return Results.NoContent();
-});
+*/
 app.Run();
