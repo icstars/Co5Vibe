@@ -1,6 +1,6 @@
 public class Convention{
-    public int id {get; set;}
-    public required string ConventionId {get; set;}
+    public int Id {get; set;}
+    public required int ConventionId {get; set;}
     public int CategoryId{get;set;}
     public int FeedbackId { get; set; }
     public int ScoreId { get; set; }

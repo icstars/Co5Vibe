@@ -381,7 +381,7 @@ app.MapPost("/api/Comment", async (EvaluateProDbContext db, int? submissionId, i
     return Results.Created($"/api/Comment/{newComment.Id}", newComment);
 });
 //update any level comment
-app.MapPut("/api/Comment", async (EvaluateProDbContext db, int? submissionId, int? categoryId, int? conventionId, Comment updatedComment) =>
+/*app.MapPost("/api/Comment", async (EvaluateProDbContext db, int? submissionId, int? categoryId, int? conventionId, Comment updatedComment) =>
 {
     var query = db.Comment.AsQueryable();
 
@@ -401,7 +401,8 @@ app.MapPut("/api/Comment", async (EvaluateProDbContext db, int? submissionId, in
     comment.Text = updatedComment.Text; 
 
     await db.SaveChangesAsync();
-    return Results.Ok(comment);}
+    return Results.Ok(comment);
+});*/
 
 
 
