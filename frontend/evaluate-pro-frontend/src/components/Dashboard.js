@@ -60,8 +60,7 @@ const Dashboard = () => {
                         <td>Box 5</td>
                     </tr>
                 </tbody>
-            </table>
-            <div className="card max width">
+                <div className="card max width">
                 <div className="container mt 3">
                     <div className="btn-group">
                         <button type="button" className="btn btn-primary">Save</button>
@@ -79,6 +78,8 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
+            </table>
+            
             <table className="table">
                 <thead>
                     <tr>
@@ -92,7 +93,7 @@ const Dashboard = () => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Collaboration</td>
+                        <td>Engagement</td>
                         <td>Does not meet expectations</td>
                         <td>Box 2</td>
                         <td>Box 3</td>
@@ -100,7 +101,7 @@ const Dashboard = () => {
                         <td>Box 5</td>
                     </tr>
                     <tr>
-                        <td>Conflict Resolution</td>
+                        <td>Verbal Communication</td>
                         <td>Box 1</td>
                         <td>Box 2</td>
                         <td>Box 3</td>
@@ -108,7 +109,7 @@ const Dashboard = () => {
                         <td>Box 5</td>
                     </tr>
                     <tr>
-                        <td>Task Management</td>
+                        <td>Written Communication</td>
                         <td>Box 1</td>
                         <td>Box 2</td>
                         <td>Box 3</td>
@@ -116,7 +117,7 @@ const Dashboard = () => {
                         <td>Box 5</td>
                     </tr>
                     <tr>
-                        <td>Adapting To Change</td>
+                        <td>Providing Feedback</td>
                         <td>Box 1</td>
                         <td>Box 2</td>
                         <td>Box 3</td>
@@ -124,7 +125,7 @@ const Dashboard = () => {
                         <td>Box 5</td>
                     </tr>
                     <tr>
-                        <td>Mentoring</td>
+                        <td>Receiving Feedback</td>
                         <td>Box 1</td>
                         <td>Box 2</td>
                         <td>Box 3</td>
@@ -132,8 +133,7 @@ const Dashboard = () => {
                         <td>Box 5</td>
                     </tr>
                 </tbody>
-            </table>
-            <div className="card max width">
+                <div className="card max width">
                 <div className="container mt 3">
                     <div className="btn-group">
                         <button type="button" className="btn btn-primary">Save</button>
@@ -145,16 +145,16 @@ const Dashboard = () => {
                                 <li><a className="dropdown-item" href="#"></a></li>
                                 <li><a className="dropdown-item" href="#"></a></li>
                             </ul>
-
-
                         </div>
                     </div>
                 </div>
             </div>
+            </table>
+          
             <table className="table">
                 <thead>
                     <tr>
-                        <th>Teamwork</th>
+                        <th>Knowledge Application And Problem Solving</th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -164,7 +164,7 @@ const Dashboard = () => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Collaboration</td>
+                        <td>Strategy and Critcal Thinking Comments</td>
                         <td>Does not meet expectations</td>
                         <td>Box 2</td>
                         <td>Box 3</td>
@@ -172,7 +172,7 @@ const Dashboard = () => {
                         <td>Box 5</td>
                     </tr>
                     <tr>
-                        <td>Conflict Resolution</td>
+                        <td>Debugging Techniques</td>
                         <td>Box 1</td>
                         <td>Box 2</td>
                         <td>Box 3</td>
@@ -180,32 +180,15 @@ const Dashboard = () => {
                         <td>Box 5</td>
                     </tr>
                     <tr>
-                        <td>Task Management</td>
+                        <td>Tool Selection and Usage</td>
                         <td>Box 1</td>
                         <td>Box 2</td>
                         <td>Box 3</td>
                         <td>Box 4</td>
                         <td>Box 5</td>
                     </tr>
-                    <tr>
-                        <td>Adapting To Change</td>
-                        <td>Box 1</td>
-                        <td>Box 2</td>
-                        <td>Box 3</td>
-                        <td>Box 4</td>
-                        <td>Box 5</td>
-                    </tr>
-                    <tr>
-                        <td>Mentoring</td>
-                        <td>Box 1</td>
-                        <td>Box 2</td>
-                        <td>Box 3</td>
-                        <td>Box 4</td>
-                        <td>Box 5</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div className="card max width">
+                                    </tbody>
+                                    <div className="card max width">
                 <div className="container mt 3">
                     <div className="btn-group">
                         <button type="button" className="btn btn-primary">Save</button>
@@ -217,16 +200,16 @@ const Dashboard = () => {
                                 <li><a className="dropdown-item" href="#"></a></li>
                                 <li><a className="dropdown-item" href="#"></a></li>
                             </ul>
-
-
                         </div>
                     </div>
                 </div>
             </div>
+            </table>
+            
             <table className="table">
                 <thead>
                     <tr>
-                        <th>Teamwork</th>
+                        <th>Code Aesthetics</th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -236,7 +219,7 @@ const Dashboard = () => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Collaboration</td>
+                        <td>Documentation</td>
                         <td>Does not meet expectations</td>
                         <td>Box 2</td>
                         <td>Box 3</td>
@@ -244,7 +227,7 @@ const Dashboard = () => {
                         <td>Box 5</td>
                     </tr>
                     <tr>
-                        <td>Conflict Resolution</td>
+                        <td>Formating Standards</td>
                         <td>Box 1</td>
                         <td>Box 2</td>
                         <td>Box 3</td>
@@ -252,7 +235,7 @@ const Dashboard = () => {
                         <td>Box 5</td>
                     </tr>
                     <tr>
-                        <td>Task Management</td>
+                        <td>Naming</td>
                         <td>Box 1</td>
                         <td>Box 2</td>
                         <td>Box 3</td>
@@ -260,24 +243,16 @@ const Dashboard = () => {
                         <td>Box 5</td>
                     </tr>
                     <tr>
-                        <td>Adapting To Change</td>
+                        <td>Syntax and Organization</td>
                         <td>Box 1</td>
                         <td>Box 2</td>
                         <td>Box 3</td>
                         <td>Box 4</td>
                         <td>Box 5</td>
                     </tr>
-                    <tr>
-                        <td>Mentoring</td>
-                        <td>Box 1</td>
-                        <td>Box 2</td>
-                        <td>Box 3</td>
-                        <td>Box 4</td>
-                        <td>Box 5</td>
-                    </tr>
+                    
                 </tbody>
-            </table>
-            <div className="card max width">
+                <div className="card max width">
                 <div className="container mt 3">
                     <div className="btn-group">
                         <button type="button" className="btn btn-primary">Save</button>
@@ -289,16 +264,16 @@ const Dashboard = () => {
                                 <li><a className="dropdown-item" href="#"></a></li>
                                 <li><a className="dropdown-item" href="#"></a></li>
                             </ul>
-
-
                         </div>
                     </div>
                 </div>
             </div>
+            </table>
+            
             <table className="table">
                 <thead>
                     <tr>
-                        <th>Teamwork</th>
+                        <th>Best Practices</th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -308,7 +283,7 @@ const Dashboard = () => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Collaboration</td>
+                        <td>Testing</td>
                         <td>Does not meet expectations</td>
                         <td>Box 2</td>
                         <td>Box 3</td>
@@ -316,7 +291,7 @@ const Dashboard = () => {
                         <td>Box 5</td>
                     </tr>
                     <tr>
-                        <td>Conflict Resolution</td>
+                        <td>Refactoring/Readability</td>
                         <td>Box 1</td>
                         <td>Box 2</td>
                         <td>Box 3</td>
@@ -324,7 +299,7 @@ const Dashboard = () => {
                         <td>Box 5</td>
                     </tr>
                     <tr>
-                        <td>Task Management</td>
+                        <td>Defensive Programming</td>
                         <td>Box 1</td>
                         <td>Box 2</td>
                         <td>Box 3</td>
@@ -332,7 +307,7 @@ const Dashboard = () => {
                         <td>Box 5</td>
                     </tr>
                     <tr>
-                        <td>Adapting To Change</td>
+                        <td>Performance</td>
                         <td>Box 1</td>
                         <td>Box 2</td>
                         <td>Box 3</td>
@@ -340,7 +315,7 @@ const Dashboard = () => {
                         <td>Box 5</td>
                     </tr>
                     <tr>
-                        <td>Mentoring</td>
+                        <td>Security</td>
                         <td>Box 1</td>
                         <td>Box 2</td>
                         <td>Box 3</td>
@@ -348,8 +323,7 @@ const Dashboard = () => {
                         <td>Box 5</td>
                     </tr>
                 </tbody>
-            </table>
-            <div className="card max width">
+                <div className="card max width">
                 <div className="container mt 3">
                     <div className="btn-group">
                         <button type="button" className="btn btn-primary">Save</button>
@@ -361,12 +335,12 @@ const Dashboard = () => {
                                 <li><a className="dropdown-item" href="#"></a></li>
                                 <li><a className="dropdown-item" href="#"></a></li>
                             </ul>
-
-
                         </div>
                     </div>
                 </div>
             </div>
+            </table>
+           
         
       </>
 );
