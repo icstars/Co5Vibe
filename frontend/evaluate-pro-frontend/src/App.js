@@ -7,6 +7,7 @@ import Login from './components/pages/login.js'
 import User from './components/pages/Admin.js'
 import Profile from './components/pages/Profile.js'
 import Manager from './components/pages/Manager.js'
+import Dashboard from './components/Dashboard.js'
 function App() {
   const [name, setName] = useState("");
 
@@ -53,6 +54,7 @@ function App() {
           
             <Routes>
               <Route exact path="/" element={<Login />} />
+              <Route path="/Dashboard" element={<Dashboard />} />
               <Route path="/sign-in" element={<Login />} />
               <Route path="/User" element={<User/>} />
               <Route path="/Profile" element={<Profile/>}/>

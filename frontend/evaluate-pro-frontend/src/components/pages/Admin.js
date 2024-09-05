@@ -10,7 +10,7 @@ const User = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [title, setTitle] = useState("");
-    const [supervisorName, setSupervisorName] = useState('');
+  const [supervisorName, setSupervisorName] = useState('');
 
 
   useEffect(() => {

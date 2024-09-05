@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
+import { Link } from 'react-router-dom';
 const Profile = () => {
   return (
 <section style={{ backgroundColor: "#eee",  minHeight: '100vh', width: '100vw'  }}>
@@ -38,14 +39,7 @@ const Profile = () => {
             <p className="text-muted mb-1">{localStorage.title}</p>
             <p className="text-muted mb-4">{localStorage.address}</p>
             <div className="d-flex justify-content-center mb-2">
-              <button
-                type="button"
-                data-mdb-button-init=""
-                data-mdb-ripple-init=""
-                className="btn btn-primary"
-              >
-                Start Assessment
-              </button>
+             <Link to="/Dashboard" className="btn btn-primary me-1">Start Assessment</Link>
               <button
                 type="button"
                 data-mdb-button-init=""

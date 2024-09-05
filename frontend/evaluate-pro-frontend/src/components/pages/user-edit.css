@@ -27,6 +27,7 @@ justify-content: end;
 
 .login-wrapper{
     display: flex;
+    padding: 40px 55px 45px 55px;
     justify-content: center;
 }
 
